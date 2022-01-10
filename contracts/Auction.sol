@@ -1,7 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Auction {
+
+/// @title An auction management contract
+/// @author Pelema A. 
+/// @notice This is still experimental, not  for production
+contract Auction is Ownable {
     uint begins;
     uint ends;
     uint itemIdCounter = 100;
@@ -10,7 +15,6 @@ contract Auction {
 
     // Stored list of items available for aution
     mapping(uint256 => Item) public catalogue;
-
     struct Item {
         uint itemId;
         uint basePrice;
@@ -27,6 +31,7 @@ contract Auction {
     event LogItemAdded(string indexed title, uint indexed basePrice);
     event LogBidPlaced(string indexed title, uint indexed amount);
 
+    /// @param _basePrice Lowest amount to bid
     function addItem(
         uint _basePrice,
         string memory _title,
@@ -58,7 +63,9 @@ contract Auction {
     }
 
     function bid(uint itemId, uint amount) public {
+        // require(!isOwner(msg.sender));
         require(catalogue[itemId].available, "Item does not exist or is not applicable for bidding.");
+        require(catalogue[itemId].highestBid < amount, "Bid should be higher than previous.");
 
         catalogue[itemId].highestBid = amount;
         catalogue[itemId].highestBidder = msg.sender;
