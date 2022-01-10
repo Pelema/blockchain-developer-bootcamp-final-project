@@ -1,20 +1,18 @@
-Final project - Automated rental agreements
+Final project - Auction platform
 Deployed version url:
 
-https://final-project-jsur.vercel.app
+https://elastic-raman-f104a0.netlify.app/home
 How to run this project locally:
 Prerequisites
 
     Node.js >= v14
     Truffle and Ganache
-    Yarn
-    git fetch --all --tags
-    git checkout tags/v1.0 -b cert
+    npm
 
 Contracts
 
-    Run yarn install in project root to install Truffle build and smart contract dependencies
-    Run local testnet in port 7545 with an Ethereum client, e.g. Ganache
+    Run npm install in project root to install Truffle build and smart contract dependencies
+    Run local testnet in port 8545 with an Ethereum client, e.g. Ganache
     truffle migrate --network development
     truffle console --network development
     Run tests in Truffle console: test
@@ -22,55 +20,38 @@ Contracts
 Frontend
 
     cd client
-    yarn install
-    yarn start
+    npm install
+    npm run start
     Open http://localhost:3000
 
 How to populate locally deployed contract with listings
 
-    truffle migrate --network development
-    truffle console --network development
-    let rr = await Rentals.deployed()
-    Add two listings:
-    rr.addProperty(web3.utils.toWei("0.00156"), "Hämeentie 77", "Duplex with a nice view", "https://google.com","https://www.hermannikuvia.fi/wp-content/uploads/Hameentie-77-sisapiha.jpg")
-    rr.addProperty(web3.utils.toWei("0.002"), "Mannerheimintie 30 A", "Duplex with a really bad view", "https://google.com","https://www.finna.fi/Cover/Show?id=hkm.HKMS000005%3Akm002zsb&index=0&size=large&source=Solr")
-    Send ETH to local wallet: web3.eth.sendTransaction({ from: "<your local address>", to: "<your local network wallet>", value: web3.utils.toWei("10") })
-    cd client && yarn start
-    Open local ui from http://localhost:3000
-    Make sure your Metamask localhost network is in port 7545.
-    If you get TXRejectedError when sending a transaction, reset your Metamask account from Advanced settings.
+    Easiest way would be to run the front-end:
+    cd client
+    npm run start
+    goto: http://localhost:3000/add
+    Please connect metamask to port 8545
+    
 
 Screencast link
 
-https://youtu.be/enwECpgoQUg
+
 Public Ethereum wallet for certification:
 
-0x109B58ED673Bb241d170b87e4F88c5f426781fC9
+0x30E884ee9817052b09078FEce4Cee7a55BBFD285
+
 Project description
 
-User and apartment owner enter an agreement for renting a property, i.e. exchanging usage rights to an apartment for as long as payments are made to a specific Ethereum account before the agreed deadline.
-
-User receives a keycode / access token to the apartment after first payment. If a user's payments are late, they will receive a reminder after one week. After e.g. 30 days (variable depending on local jurisdiction) of no payments, usage rights will be automatically transferred back to owner and apartment access rights will be revoked from user. User agrees to this procedure when entering contract with owner.
-
-    Checking for received payments and transferring ownership back to owner on non-payment cases could be scheduled with e.g. Gelato Network (https://docs.gelato.network/tutorial).
-    Opening door locks could be done with an app with smart locks, e.g. https://api.getkisi.com/docs. Smart lock APIs won't be explored in this project.
+A user accesses the auction site, finds items they are intersted in and places bids on them. When auction
+ends the highest bidder's details are recorded and can pay the item out.
 
 Simple workflow
 
-    Enter service web site
+    Goto website
     Login with Metamask
-    Browse apartments
-    Select apartment
-    Agree on contract, pay first installment with Metamask (smart contract call)
-    Tenantship is transferred to user account (smart contract call)
-    Receive key phrase / token / OTP / etc. to access apartment with smart lock app (this part will be mocked in project)
+    Browse auction catalogue
+    Bid on items
 
-Scheduled workflow for late payments (Not implemented)
-
-    Run scheduled contract weekly (Gelato? https://docs.gelato.network/tutorial)
-    Check for made payments for each rental agreement (from renter wallet to owner wallet)
-    If last payment is late 7 days, send reminder
-    If last payment is late >= 30 days, remove tenant. Revoke user token access rights to apartment smart lock.
 
 Directory structure
 
@@ -81,11 +62,11 @@ Directory structure
 
 Environment variables (not needed for running project locally)
 
-ROPSTEN_INFURA_PROJECT_ID=
-ROPSTEN_MNEMONIC=
+INFURA_ROPSTEN_URL=
+MNEMONIC=
 
 TODO features
 
-    Tenant payments tracking
-    Tenant removal
     Fund withdrawal
+    Highest bidder payment
+    Auction expiry time
