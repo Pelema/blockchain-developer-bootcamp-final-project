@@ -4,13 +4,13 @@ Deployed version url:
 https://elastic-raman-f104a0.netlify.app/home <br />
 ### How to run this project locally:
 <br />
-Prerequisites
+#### Prerequisites
 
     Node.js >= v14
     Truffle and Ganache
     npm
 
-Contracts
+#### Contracts
 
     Run npm install in project root to install Truffle build and smart contract dependencies
     Run local testnet in port 8545 with an Ethereum client, e.g. Ganache
@@ -18,14 +18,14 @@ Contracts
     truffle console --network development
     Run tests in Truffle console: test
 
-Frontend
+#### Frontend
 
     cd client
     npm install
     npm run start
     Open http://localhost:3000
 
-How to populate locally deployed contract with listings
+#### How to populate locally deployed contract with listings
 
     Easiest way would be to run the front-end:
     cd client
@@ -34,10 +34,10 @@ How to populate locally deployed contract with listings
     Please connect metamask to port 8545
     
 
-Screencast link
+#### Screencast link
 
 
-Public Ethereum wallet for certification:
+### Public Ethereum wallet for certification:
 
 0x30E884ee9817052b09078FEce4Cee7a55BBFD285
 
@@ -46,7 +46,7 @@ Public Ethereum wallet for certification:
 A user accesses the auction site, finds items they are intersted in and places bids on them. When auction
 ends the highest bidder's details are recorded and can pay the item out.
 
-Simple workflow
+#### Simple workflow
 
     Goto website
     Login with Metamask
@@ -54,7 +54,7 @@ Simple workflow
     Bid on items
 
 
-Directory structure
+#### Directory structure
 
     client: Project's React frontend.
     contracts: Smart contracts that are deployed in the Ropsten testnet.
@@ -67,7 +67,7 @@ INFURA_ROPSTEN_URL=
 <br />
 MNEMONIC=
 
-TODO features
+### TODO features
 
     Fund withdrawal
     Highest bidder payment
