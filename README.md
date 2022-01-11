@@ -1,7 +1,7 @@
 ### Final project - Auction platform
 Deployed version url:
 
-https://elastic-raman-f104a0.netlify.app/home
+https://elastic-raman-f104a0.netlify.app/home <br />
 How to run this project locally:
 <br />
 Prerequisites
