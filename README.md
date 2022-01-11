@@ -1,8 +1,8 @@
-### Final project - Auction platform
+# Final project - Auction platform
 Deployed version url:
 
 https://elastic-raman-f104a0.netlify.app/home <br />
-How to run this project locally:
+### How to run this project locally:
 <br />
 Prerequisites
 
@@ -41,7 +41,7 @@ Public Ethereum wallet for certification:
 
 0x30E884ee9817052b09078FEce4Cee7a55BBFD285
 
-Project description
+# Project description
 
 A user accesses the auction site, finds items they are intersted in and places bids on them. When auction
 ends the highest bidder's details are recorded and can pay the item out.
