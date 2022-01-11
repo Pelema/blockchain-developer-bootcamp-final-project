@@ -1,8 +1,9 @@
-Final project - Auction platform
+### Final project - Auction platform
 Deployed version url:
 
 https://elastic-raman-f104a0.netlify.app/home
 How to run this project locally:
+<br />
 Prerequisites
 
     Node.js >= v14
@@ -63,6 +64,7 @@ Directory structure
 Environment variables (not needed for running project locally)
 
 INFURA_ROPSTEN_URL=
+<br />
 MNEMONIC=
 
 TODO features
