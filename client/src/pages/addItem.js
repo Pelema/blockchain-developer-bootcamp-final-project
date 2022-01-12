@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Row, Col, Input, Label, FormGroup } from 'reactstrap';
+import { Row, Col, Input, Label, FormGroup } from 'reactstrap';
 import { addItem } from '../web3Client'
 import CustomModal from '../components/modal'
 import { useForm } from 'react-hook-form'
@@ -26,17 +26,22 @@ const styles = {
 }
 function AddItem() {
     const [modalIsOpen, setIsOpen] = useState(false)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmit = (formData) => {
+        setIsLoading(true)
         addItem(formData.title, formData.basePrice, formData.description, formData.imgUrl)
         .then(res=>{
+            setIsLoading(false)
+            reset()
+
             console.log(res)
         })
         .catch(err=>{
+            setIsLoading(false)
             console.log(err)
         })
-        console.log(formData, " form data")
     }
 
     useEffect(() => {
@@ -75,7 +80,7 @@ function AddItem() {
                 <Row>
                     <FormGroup>
                         <Col>
-                            <Input type="submit" value="Submit" />
+                            <Input type="submit" disabled={isLoading} value="Submit" className='btn btn-primary'/>
                         </Col>
                     </FormGroup>
                 </Row>

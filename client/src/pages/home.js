@@ -41,17 +41,17 @@ function Home() {
       {items.map(((i) => {
         return <div style={styles.item} key={i.itemId}>
           <div style={styles.itemInner}>
-            <div style={{ flexGrow: '1', position: 'relative', overflowY: 'hidden'}}>
+            <div style={{ flexGrow: '1', position: 'relative', overflowY: 'hidden' }}>
               <Link to='/product'>
                 {/* <div style={{ height: '100%' }}>
                   {i.title}
                 </div> */}
-                <img src={i.imgUrl} style={{width: '100%'}} />
-                <div style={{position: 'absolute', bottom: '10px', left: '5px', fontWeight: 'bolder'}}>Highest Bid: {i.highestBid}</div>
+                <img src={i.imgUrl} style={{ width: '100%' }} />
               </Link>
             </div>
-            <div >
-              <Button style={{ width: '100%', padding: '15px' }} onClick={() => { setSelectedItem(i.itemId); setIsOpen(true)}}>Bid</Button>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <div style={{ fontWeight: 'bolder' }}>Highest Bid: {i.highestBid}</div>
+              <Button style={{ padding: '15px' }} onClick={() => { setSelectedItem(i.itemId); setIsOpen(true) }}>Bid</Button>
             </div>
           </div>
         </div>
