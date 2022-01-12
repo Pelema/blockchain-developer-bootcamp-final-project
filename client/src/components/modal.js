@@ -18,17 +18,20 @@ const customStyles = {
 function CustomModal(props) {
     const { modalIsOpen, setIsOpen, itemId } = props
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [isLoading, setIsLoading] = useState(false)
 
     let subtitle;
 
 
     const onSubmit = (formData) => {
+        setIsLoading(true)
         placeBid(formData.itemId, formData.amount)
             .then(res => {
                 console.log(res)
                 window.location.reload(false);
             })
             .catch(err => {
+                setIsLoading(false)
                 console.log(err)
             })
     }
@@ -77,7 +80,7 @@ function CustomModal(props) {
                         </FormGroup>
                         <FormGroup>
                             <Col>
-                                <input type='submit' value="Place Bid" className='form-control' />
+                                <input type='submit' disabled={isLoading} value={isLoading?"...":"Place Bid"} className='form-control btn btn-primary' />
                             </Col>
                         </FormGroup>
                     </Row>

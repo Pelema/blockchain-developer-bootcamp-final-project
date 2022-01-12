@@ -1,8 +1,10 @@
+import Web3 from 'web3'
 import React, { useState, useEffect } from 'react'
 import { Button } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { getItems } from '../web3Client'
 import CustomModal from '../components/modal'
+
 
 
 const styles = {
@@ -50,7 +52,7 @@ function Home() {
               </Link>
             </div>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <div style={{ fontWeight: 'bolder' }}>Highest Bid: {i.highestBid}</div>
+              <div style={{ fontWeight: 'bolder' }}>Highest Bid: {Web3.utils.fromWei(i.highestBid)}</div>
               <Button style={{ padding: '15px' }} onClick={() => { setSelectedItem(i.itemId); setIsOpen(true) }}>Bid</Button>
             </div>
           </div>

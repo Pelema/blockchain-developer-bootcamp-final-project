@@ -49,7 +49,7 @@ export const addItem = async (title, base_price, description, img_url) => {
     if(!isInitialized)
         await initWeb3()
 
-    return auctionContract.methods.addItem(base_price, title, description, img_url).send({from:currentAccount})
+    return auctionContract.methods.addItem(Web3.utils.toWei(base_price), title, description, img_url).send({from:currentAccount})
 }
 
 export const getItems = async () => {
@@ -63,5 +63,5 @@ export const placeBid = async (itemId, amount) => {
     if(!isInitialized)
         await initWeb3()
 
-    return auctionContract.methods.bid(itemId, amount).send({from: currentAccount});
+    return auctionContract.methods.bid(itemId, Web3.utils.toWei(amount)).send({from: currentAccount});
 }

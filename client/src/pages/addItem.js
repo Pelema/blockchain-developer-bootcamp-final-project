@@ -80,7 +80,7 @@ function AddItem() {
                 <Row>
                     <FormGroup>
                         <Col>
-                            <Input type="submit" disabled={isLoading} value="Submit" className='btn btn-primary'/>
+                            <Input type="submit" disabled={isLoading} value={isLoading? "...":"Submit"} className='btn btn-primary'/>
                         </Col>
                     </FormGroup>
                 </Row>
