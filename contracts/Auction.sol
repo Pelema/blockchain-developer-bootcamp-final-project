@@ -37,7 +37,7 @@ contract Auction is Ownable {
         string memory _title,
         string memory _description,
         string memory _imgUrl
-    ) public {
+    ) public onlyOwner {
         catalogue[itemIdCounter] = Item({
             itemId: itemIdCounter,
             title: _title,
