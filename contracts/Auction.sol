@@ -29,7 +29,7 @@ contract Auction is Ownable {
     constructor() {}
 
     event LogItemAdded(string indexed title, uint indexed basePrice);
-    event LogBidPlaced(string indexed title, uint indexed amount);
+    event LogBidPlaced(uint indexed itemId, uint indexed amount);
 
     /// @param _basePrice Lowest amount to bid
     function addItem(
@@ -65,11 +65,12 @@ contract Auction is Ownable {
     function bid(uint itemId, uint amount) public {
         // require(!isOwner(msg.sender));
         require(catalogue[itemId].available, "Item does not exist or is not applicable for bidding.");
+        require(catalogue[itemId].basePrice < amount, "Bid should be higher than base amount.");
         require(catalogue[itemId].highestBid < amount, "Bid should be higher than previous.");
 
         catalogue[itemId].highestBid = amount;
         catalogue[itemId].highestBidder = msg.sender;
 
-        emit LogBidPlaced(catalogue[itemId].title, amount);
+        emit LogBidPlaced(catalogue[itemId].itemId, amount);
     }
 }
