@@ -51,8 +51,12 @@ function Home() {
                 <img src={i.imgUrl} style={{ width: '100%' }} />
               </Link>
             </div>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <div style={{ fontWeight: 'bolder' }}>Highest Bid: {Web3.utils.fromWei(i.highestBid)}</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{flexGrow: 1}}>
+                <div style={{overflowX: 'hidden', textOverflow: 'ellipsis', flexWrap: 'nowrap', maxWidth: '200px', whiteSpace: 'nowrap'}}><span style={{fontWeight: 'bold'}}>Min Bid:</span> {Web3.utils.fromWei(i.basePrice)}</div>
+                <div style={{overflowX: 'hidden', textOverflow: 'ellipsis', flexWrap: 'nowrap', maxWidth: '200px', whiteSpace: 'nowrap'}}><span style={{fontWeight: 'bold'}}>Highest Bid:</span> {Web3.utils.fromWei(i.highestBid)}</div>
+                <div style={{overflowX: 'hidden', textOverflow: 'ellipsis', flexWrap: 'nowrap', maxWidth: '200px', whiteSpace: 'nowrap'}}><span style={{fontWeight: 'bold'}}>Highest Bidder:</span> {i.highestBidder ? i.highestBidder : 'None'}</div>
+              </div>
               <Button style={{ padding: '15px' }} onClick={() => { setSelectedItem(i.itemId); setIsOpen(true) }}>Bid</Button>
             </div>
           </div>
